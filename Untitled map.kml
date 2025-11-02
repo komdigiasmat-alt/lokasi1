@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Untitled map</name>
+	<gx:CascadingStyle kml:id="__managed_style_224623D21C3B7898C4BB">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=d32f2f&amp;id=2051&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>6</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<displayMode>hide</displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_133125BD293B7898C4BB">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=d32f2f&amp;id=2051&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>4</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<displayMode>hide</displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_03A5F689683B7898C4BB">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_133125BD293B7898C4BB</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_224623D21C3B7898C4BB</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_25348DF96F3B78920019">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>6</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<displayMode>hide</displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_1A2F2DF2F53B78920019">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>4</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<displayMode>hide</displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_08F3A6533B3B78920019">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_1A2F2DF2F53B78920019</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_25348DF96F3B78920019</styleUrl>
+		</Pair>
+	</StyleMap>
+	<GroundOverlay id="0EB01AEA0E3B78920014">
+		<name>Untitled overlay</name>
+		<styleUrl>#__managed_style_08F3A6533B3B78920019</styleUrl>
+		<Icon>
+			<href>data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==</href>
+		</Icon>
+		<LatLonBox>
+			<north>85</north>
+			<south>-85</south>
+			<east>180</east>
+			<west>-180</west>
+		</LatLonBox>
+		<gx:MapTilePyramid>
+			<gx:minLevel>0</gx:minLevel>
+			<gx:maxLevel>22</gx:maxLevel>
+		</gx:MapTilePyramid>
+	</GroundOverlay>
+	<Folder id="07B278FD8F3B7897A5C8">
+		<name>BTS TELKOMSEL</name>
+		<open>1</open>
+		<styleUrl>#__managed_style_08F3A6533B3B78920019</styleUrl>
+		<Placemark id="047945D2973B7899A03F">
+			<name>1. BIS AGATS</name>
+			<LookAt>
+				<longitude>138.136852668705</longitude>
+				<latitude>-5.537965608379315</latitude>
+				<altitude>4.585711925327171</altitude>
+				<heading>357.2239841246141</heading>
+				<tilt>0</tilt>
+				<gx:fovy>34.33440614000001</gx:fovy>
+				<range>431.1211021328199</range>
+				<altitudeMode>absolute</altitudeMode>
+			</LookAt>
+			<styleUrl>#__managed_style_03A5F689683B7898C4BB</styleUrl>
+			<Point>
+				<coordinates>138.1367370875408,-5.537873189674113,4.793744083909253</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="0F3B32E21A3B789AB3F4">
+			<name>3. CEMENSES</name>
+			<LookAt>
+				<longitude>138.1421107464609</longitude>
+				<latitude>-5.532169381537388</latitude>
+				<altitude>15.26538565179694</altitude>
+				<heading>357.2239779023645</heading>
+				<tilt>0</tilt>
+				<gx:fovy>34.33440614000001</gx:fovy>
+				<range>1095.233167621773</range>
+				<altitudeMode>absolute</altitudeMode>
+			</LookAt>
+			<styleUrl>#__managed_style_03A5F689683B7898C4BB</styleUrl>
+			<Point>
+				<coordinates>138.1407239012545,-5.531533402888735,11.61537150880597</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="0D07BC6A993B78A5B2E9">
+			<name>4. KAMPUNG ASWETSY</name>
+			<LookAt>
+				<longitude>138.1320435593173</longitude>
+				<latitude>-5.544696562679928</latitude>
+				<altitude>6.620041070717251</altitude>
+				<heading>357.2239253380945</heading>
+				<tilt>0</tilt>
+				<gx:fovy>34.33440614000001</gx:fovy>
+				<range>1006.041964159085</range>
+				<altitudeMode>absolute</altitudeMode>
+			</LookAt>
+			<styleUrl>#__managed_style_03A5F689683B7898C4BB</styleUrl>
+			<Point>
+				<coordinates>138.1304251779885,-5.543940600956681,5.374806771471164</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="0362E11CC13B789BBE14">
+			<name>5. EWER</name>
+			<LookAt>
+				<longitude>138.08532941013</longitude>
+				<latitude>-5.495205816400925</latitude>
+				<altitude>7.256521258298179</altitude>
+				<heading>357.2239727538804</heading>
+				<tilt>0</tilt>
+				<gx:fovy>34.33440614000001</gx:fovy>
+				<range>1616.107993553742</range>
+				<altitudeMode>absolute</altitudeMode>
+			</LookAt>
+			<styleUrl>#__managed_style_03A5F689683B7898C4BB</styleUrl>
+			<Point>
+				<coordinates>138.0854378309874,-5.495294773577486,8.083733937099991</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="0D90D27C013B78981D64">
+			<name>6. PEMDA</name>
+			<LookAt>
+				<longitude>138.1385731905851</longitude>
+				<latitude>-5.542269204915738</latitude>
+				<altitude>3.810224998034244</altitude>
+				<heading>357.2239946497103</heading>
+				<tilt>0</tilt>
+				<gx:fovy>34.33440614000001</gx:fovy>
+				<range>697.3528685835481</range>
+				<altitudeMode>absolute</altitudeMode>
+			</LookAt>
+			<styleUrl>#__managed_style_03A5F689683B7898C4BB</styleUrl>
+			<Point>
+				<coordinates>138.1383856895334,-5.542393687776038,3.81024665064263</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="074E470E763B78A86BCB">
+			<name>7. BINAM</name>
+			<LookAt>
+				<longitude>139.3013777097395</longitude>
+				<latitude>-5.358458784716838</latitude>
+				<altitude>5.806979576776301</altitude>
+				<heading>359.9997258597971</heading>
+				<tilt>0</tilt>
+				<gx:fovy>35</gx:fovy>
+				<range>2362.562050118577</range>
+				<altitudeMode>absolute</altitudeMode>
+			</LookAt>
+			<styleUrl>#__managed_style_03A5F689683B7898C4BB</styleUrl>
+			<Point>
+				<coordinates>139.3041548420827,-5.360807721142138,13.36409690991258</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="07AF88F3A03B789EFEF9">
+			<name>8. KAMPUNG KAYE</name>
+			<LookAt>
+				<longitude>138.1303225742825</longitude>
+				<latitude>-5.549639305302153</latitude>
+				<altitude>7.890203260029837</altitude>
+				<heading>357.2239642627506</heading>
+				<tilt>0</tilt>
+				<gx:fovy>34.33440614000001</gx:fovy>
+				<range>1436.876081256632</range>
+				<altitudeMode>absolute</altitudeMode>
+			</LookAt>
+			<styleUrl>#__managed_style_03A5F689683B7898C4BB</styleUrl>
+			<Point>
+				<coordinates>138.1298171430845,-5.550307952013608,9.909403443879032</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="0ED36459D13B789FAEA4">
+			<name>9. JLN. AWYU</name>
+			<LookAt>
+				<longitude>138.1322834761073</longitude>
+				<latitude>-5.542859068165843</latitude>
+				<altitude>4.765178861197914</altitude>
+				<heading>357.2239614724843</heading>
+				<tilt>0</tilt>
+				<gx:fovy>34.33440614000001</gx:fovy>
+				<range>535.5283995751961</range>
+				<altitudeMode>absolute</altitudeMode>
+			</LookAt>
+			<styleUrl>#__managed_style_03A5F689683B7898C4BB</styleUrl>
+			<Point>
+				<coordinates>138.1324032191872,-5.542612903479617,4.916695486649902</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="02C647F2353B78A0BCF3">
+			<name>10. JLN. ZEGWARD</name>
+			<LookAt>
+				<longitude>138.1398352158209</longitude>
+				<latitude>-5.545349841672533</latitude>
+				<altitude>3.809616620002612</altitude>
+				<heading>357.223952667048</heading>
+				<tilt>0</tilt>
+				<gx:fovy>34.33440614000001</gx:fovy>
+				<range>755.096797945298</range>
+				<altitudeMode>absolute</altitudeMode>
+			</LookAt>
+			<styleUrl>#__managed_style_03A5F689683B7898C4BB</styleUrl>
+			<Point>
+				<coordinates>138.139742383045,-5.545715552340048,3.445100704121569</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="0D090C4A923B78A3113E">
+			<name>11. KAMPUNG MBAIT</name>
+			<LookAt>
+				<longitude>138.1391976956181</longitude>
+				<latitude>-5.529160510200058</latitude>
+				<altitude>11.18085339187265</altitude>
+				<heading>357.2239345167767</heading>
+				<tilt>0</tilt>
+				<gx:fovy>34.33440614000001</gx:fovy>
+				<range>592.681624639663</range>
+				<altitudeMode>absolute</altitudeMode>
+			</LookAt>
+			<styleUrl>#__managed_style_03A5F689683B7898C4BB</styleUrl>
+			<Point>
+				<coordinates>138.1385098882783,-5.529044843493965,9.776249369130561</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="0EDBAEC2703B78A196CC">
+			<name>12. KAMPUNG BARU</name>
+			<LookAt>
+				<longitude>138.1409850328524</longitude>
+				<latitude>-5.522175485104832</latitude>
+				<altitude>19.33887908348456</altitude>
+				<heading>357.223945081931</heading>
+				<tilt>0</tilt>
+				<gx:fovy>34.33440614000001</gx:fovy>
+				<range>1119.979148775019</range>
+				<altitudeMode>absolute</altitudeMode>
+			</LookAt>
+			<styleUrl>#__managed_style_03A5F689683B7898C4BB</styleUrl>
+			<Point>
+				<coordinates>138.1411542393825,-5.520801471368317,18.01516970221515</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark id="0AF4BD6DBA3B78A4BAD4">
+			<name>13. BIS AGATS</name>
+			<LookAt>
+				<longitude>138.1477626438998</longitude>
+				<latitude>-5.536231922809598</latitude>
+				<altitude>6.601002787742556</altitude>
+				<heading>357.2239292742689</heading>
+				<tilt>0</tilt>
+				<gx:fovy>34.33440614000001</gx:fovy>
+				<range>541.6951707264525</range>
+				<altitudeMode>absolute</altitudeMode>
+			</LookAt>
+			<styleUrl>#__managed_style_03A5F689683B7898C4BB</styleUrl>
+			<Point>
+				<coordinates>138.1476329939247,-5.536374120429771,6.143358311429104</coordinates>
+			</Point>
+		</Placemark>
+	</Folder>
+</Document>
+</kml>
