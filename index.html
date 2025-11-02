@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Peta Lokasi 1</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet-omnivore/leaflet-omnivore.min.js"></script>
+  <style>
+    html, body, #map { height: 100%; margin: 0; padding: 0; }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <script>
+    // Inisialisasi peta
+    var map = L.map('map').setView([-4.5, 138.5], 8);
+
+    // Tambahkan layer peta dasar
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Link ke file KML kamu
+    var kmlUrl = 'https://rawcdn.githack.com/komdigiasmat-alt/lokasi1/main/Untitled%20map.kml';
+
+    // Tampilkan file KML di peta
+    omnivore.kml(kmlUrl).on('ready', function() {
+      map.fitBounds(this.getBounds());
+    }).addTo(map);
+  </script>
+</body>
+</html>
