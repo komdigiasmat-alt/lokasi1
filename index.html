@@ -9,6 +9,7 @@
   <script src="https://unpkg.com/leaflet-omnivore/leaflet-omnivore.min.js"></script>
   <style>
     html, body, #map { height: 100%; margin: 0; padding: 0; }
+    .leaflet-popup-content { font-size: 14px; font-weight: bold; }
   </style>
 </head>
 <body>
@@ -17,19 +18,27 @@
     // Inisialisasi peta
     var map = L.map('map').setView([-4.5, 138.5], 8);
 
-    // Tambahkan layer peta dasar
+    // Tambahkan layer dasar
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
       attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
 
-    // Link ke file KML kamu
+    // URL file KML kamu
     var kmlUrl = 'https://rawcdn.githack.com/komdigiasmat-alt/lokasi1/main/Untitled%20map.kml';
 
-    // Tampilkan file KML di peta
-    omnivore.kml(kmlUrl).on('ready', function() {
-      map.fitBounds(this.getBounds());
-    }).addTo(map);
+    // Muat file KML dan tampilkan dengan popup nama titik
+    omnivore.kml(kmlUrl)
+      .on('ready', function() {
+        map.fitBounds(this.getBounds());
+      })
+      .on('layeradd', function(e) {
+        var layer = e.layer;
+        if (layer.feature && layer.feature.properties && layer.feature.properties.name) {
+          layer.bindPopup(layer.feature.properties.name);
+        }
+      })
+      .addTo(map);
   </script>
 </body>
 </html>
