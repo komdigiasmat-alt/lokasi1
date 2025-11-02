@@ -3,14 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>BTS Telkomsel - Mode Satelit</title>
+  <title>BTS Telkomsel - Mode Peta & Satelit</title>
 
-  <!-- Leaflet CSS & JS -->
+  <!-- Leaflet -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
-  <!-- Plugin pembaca file KML -->
+  <!-- Leaflet Omnivore (baca KML) -->
   <script src="https://unpkg.com/leaflet-omnivore/leaflet-omnivore.min.js"></script>
+
+  <!-- Leaflet Control Search -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-control-search/dist/leaflet-search.min.css">
+  <script src="https://unpkg.com/leaflet-control-search/dist/leaflet-search.min.js"></script>
 
   <style>
     html, body, #map {
@@ -19,19 +23,7 @@
       padding: 0;
     }
 
-    /* Tooltip nama titik */
-    .leaflet-tooltip {
-      background-color: white;
-      border: 1px solid #d32f2f;
-      border-radius: 4px;
-      padding: 3px 6px;
-      font-size: 12px;
-      color: #d32f2f;
-      font-weight: bold;
-      box-shadow: 0 0 3px rgba(0,0,0,0.3);
-    }
-
-    /* Overlay judul */
+    /* Judul */
     #title {
       position: absolute;
       top: 10px;
@@ -44,32 +36,67 @@
       font-size: 16px;
       font-weight: bold;
       box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-      z-index: 9999;
+      z-index: 1000;
+    }
+
+    /* Tooltip */
+    .leaflet-tooltip {
+      background-color: white;
+      border: 1px solid #d32f2f;
+      border-radius: 4px;
+      padding: 3px 6px;
+      font-size: 12px;
+      color: #d32f2f;
+      font-weight: bold;
+      box-shadow: 0 0 3px rgba(0,0,0,0.3);
+    }
+
+    /* Search bar */
+    .leaflet-control-search {
+      max-width: 250px;
+    }
+
+    /* Tombol kontrol peta */
+    .leaflet-control-layers {
+      background: white;
+      border-radius: 6px;
+      padding: 4px;
+      font-size: 13px;
+    }
+
+    @media (max-width: 600px) {
+      #title {
+        font-size: 14px;
+        padding: 6px 12px;
+      }
     }
   </style>
 </head>
 <body>
-  <div id="title">📶 BTS TELKOMSEL - Mode Satelit</div>
+  <div id="title">📶 BTS TELKOMSEL</div>
   <div id="map"></div>
 
   <script>
-    // Inisialisasi peta (pusat Asmat)
+    // Inisialisasi peta
     var map = L.map('map').setView([-5.5, 138.5], 9);
 
-    // Layer citra satelit dari Esri
-    var esriSatellite = L.tileLayer(
-      'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-      {
-        maxZoom: 19,
-        attribution:
-          'Citra © <a href="https://www.esri.com/">Esri</a>, Maxar, Earthstar Geographics'
-      }
-    ).addTo(map);
+    // ======= PILIHAN LAYER =======
+    var baseMaps = {
+      "🗺️ Peta Jalan": L.tileLayer(
+        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+        { maxZoom: 19, attribution: '&copy; OpenStreetMap' }
+      ),
 
-    // URL file KML dari GitHub (gunakan raw.githack agar bisa diakses langsung)
-    var kmlUrl = 'https://rawcdn.githack.com/komdigiasmat-alt/lokasi1/main/lokasi1.kml';
+      "🛰️ Mode Satelit": L.tileLayer(
+        'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+        { maxZoom: 19, attribution: 'Citra © Esri, Maxar, Earthstar Geographics' }
+      )
+    };
 
-    // Ikon BTS (menara)
+    // Default: Satelit
+    baseMaps["🛰️ Mode Satelit"].addTo(map);
+
+    // ======= ICON BTS =======
     var towerIcon = L.icon({
       iconUrl: 'https://cdn-icons-png.flaticon.com/512/484/484167.png',
       iconSize: [36, 36],
@@ -77,7 +104,10 @@
       popupAnchor: [0, -28]
     });
 
-    // Muat file KML
+    // ======= KML LAYER =======
+    var kmlUrl = 'https://rawcdn.githack.com/komdigiasmat-alt/lokasi1/main/lokasi1.kml';
+    var markersLayer = new L.LayerGroup();
+
     omnivore.kml(kmlUrl)
       .on('ready', function() {
         map.fitBounds(this.getBounds());
@@ -87,18 +117,40 @@
         if (layer.feature && layer.feature.properties && layer.feature.properties.name) {
           var latlng = layer.getLatLng ? layer.getLatLng() : null;
           if (latlng) {
-            map.removeLayer(layer); // ganti marker bawaan dengan ikon custom
-            var marker = L.marker(latlng, { icon: towerIcon }).addTo(map);
+            map.removeLayer(layer);
+            var marker = L.marker(latlng, { icon: towerIcon }).addTo(markersLayer);
             marker.bindTooltip(layer.feature.properties.name, {
               permanent: true,
               direction: 'top',
               offset: [0, -10]
             });
             marker.bindPopup('<b>' + layer.feature.properties.name + '</b>');
+            marker.name = layer.feature.properties.name; // penting untuk pencarian
           }
         }
       })
       .addTo(map);
+
+    // Tambahkan layer ke peta
+    markersLayer.addTo(map);
+
+    // ======= KONTROL PENCARIAN =======
+    var searchControl = new L.Control.Search({
+      layer: markersLayer,
+      propertyName: 'name',
+      zoom: 14,
+      initial: false,
+      marker: false,
+      textPlaceholder: 'Cari BTS...',
+      moveToLocation: function(latlng, title, map) {
+        map.setView(latlng, 14);
+      }
+    });
+
+    map.addControl(searchControl);
+
+    // ======= KONTROL PILIHAN PETA =======
+    L.control.layers(baseMaps, null, { collapsed: false }).addTo(map);
   </script>
 </body>
 </html>
