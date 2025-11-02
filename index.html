@@ -3,91 +3,68 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Peta BTS Telkomsel</title>
+  <title>Peta BTS Telkomsel - Mode Satelit</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script src="https://unpkg.com/leaflet-omnivore/leaflet-omnivore.min.js"></script>
   <style>
-    html, body { height: 100%; margin: 0; font-family: Arial, sans-serif; }
-    #container { display: flex; height: 100%; }
-    #sidebar {
-      width: 300px; background: #fafafa; border-right: 2px solid #ddd;
-      overflow-y: auto; padding: 10px;
-    }
-    #sidebar h2 { text-align: center; color: #d32f2f; margin: 10px 0; }
-    #locationList { list-style: none; padding: 0; margin: 0; }
-    #locationList li {
-      padding: 8px; border-bottom: 1px solid #eee; cursor: pointer;
-    }
-    #locationList li:hover { background: #f5f5f5; }
-    #map { flex: 1; }
+    html, body, #map { height: 100%; margin: 0; padding: 0; }
     .leaflet-tooltip {
-      background-color: white; border: 1px solid #d32f2f; border-radius: 4px;
-      padding: 3px 6px; font-size: 12px; color: #d32f2f; font-weight: bold;
+      background-color: white;
+      border: 1px solid #d32f2f;
+      border-radius: 4px;
+      padding: 3px 6px;
+      font-size: 12px;
+      color: #d32f2f;
+      font-weight: bold;
       box-shadow: 0 0 3px rgba(0,0,0,0.3);
     }
   </style>
 </head>
 <body>
-  <div id="container">
-    <div id="sidebar">
-      <h2>📡 BTS Telkomsel</h2>
-      <ul id="locationList"></ul>
-    </div>
-    <div id="map"></div>
-  </div>
-
+  <div id="map"></div>
   <script>
+    // Inisialisasi peta (posisi awal Asmat)
     var map = L.map('map').setView([-5.5, 138.5], 9);
 
+    // Gunakan layer satelit dari Esri (legal & tanpa API key)
     var Esri_Satellite = L.tileLayer(
-      'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+      'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', 
       {
         maxZoom: 19,
-        attribution: '&copy; <a href="https://www.esri.com/">Esri</a>'
+        attribution: '&copy; <a href="https://www.esri.com/">Esri</a> | Tiles &copy; Esri — Source: Esri, Maxar, Earthstar Geographics'
       }
     ).addTo(map);
 
-    var kmlUrl = 'https://rawcdn.githack.com/komdigiasmat-alt/lokasi1/main/lokasi1.kml';
+    // URL file KML kamu dari GitHub
+    var kmlUrl = 'https://rawcdn.githack.com/komdigiasmat-alt/lokasi1/main/Untitled%20map.kml';
+
+    // Ikon menara BTS
     var towerIcon = L.icon({
-      iconUrl: 'https://cdn-icons-png.flaticon.com/512/484/484167.png',
-      iconSize: [36, 36], iconAnchor: [18, 36], popupAnchor: [0, -30]
+      iconUrl: 'https://cdn-icons-png.flaticon.com/512/484/484167.png', 
+      iconSize: [36, 36],
+      iconAnchor: [18, 36],
+      popupAnchor: [0, -30]
     });
 
-    var markers = [];
-    var kmlLayer = omnivore.kml(kmlUrl)
+    // Muat file KML
+    omnivore.kml(kmlUrl)
       .on('ready', function() {
-        this.getLayers().forEach(function(layer) {
-          if (layer.feature && layer.feature.properties && layer.feature.properties.name) {
-            var latlng = layer.getLatLng ? layer.getLatLng() : null;
-            if (latlng) {
-              map.removeLayer(layer);
-              var marker = L.marker(latlng, { icon: towerIcon }).addTo(map);
-              marker.bindTooltip(layer.feature.properties.name, {
-                permanent: true, direction: 'top', offset: [0, -10]
-              });
-              marker.bindPopup("<b>" + layer.feature.properties.name + "</b>");
-              markers.push({ name: layer.feature.properties.name, marker: marker });
-            }
+        map.fitBounds(this.getBounds());
+      })
+      .on('layeradd', function(e) {
+        var layer = e.layer;
+        if (layer.feature && layer.feature.properties && layer.feature.properties.name) {
+          var latlng = layer.getLatLng ? layer.getLatLng() : null;
+          if (latlng) {
+            map.removeLayer(layer);
+            var marker = L.marker(latlng, { icon: towerIcon }).addTo(map);
+            marker.bindTooltip(layer.feature.properties.name, {
+              permanent: true,
+              direction: 'top',
+              offset: [0, -10]
+            }).openTooltip();
           }
-        });
-
-        if (markers.length > 0) {
-          var group = L.featureGroup(markers.map(m => m.marker));
-          map.fitBounds(group.getBounds());
-
-          var list = document.getElementById('locationList');
-          markers.forEach(function(item) {
-            var li = document.createElement('li');
-            li.textContent = item.name;
-            li.onclick = function() {
-              map.setView(item.marker.getLatLng(), 15);
-              item.marker.openPopup();
-            };
-            list.appendChild(li);
-          });
-        } else {
-          alert("⚠️ Tidak ada titik ditemukan dalam file KML.");
         }
       })
       .addTo(map);
